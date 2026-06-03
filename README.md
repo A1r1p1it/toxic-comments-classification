@@ -1,6 +1,6 @@
 # Toxic Comment Classification
 
-> If GitHub does not render the notebook properly, open the nbviewer link above for a clean static view.
+> If GitHub does not render the notebook properly, open the nbviewer link below for a clean static view.
 
 >**Notebook View**: [fraud_clean.ipynb on nbviewer](https://nbviewer.org/github/A1r1p1it/toxic-comments-classification/blob/main/nlp.ipynb)
 
