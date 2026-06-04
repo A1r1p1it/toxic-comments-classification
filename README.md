@@ -2,7 +2,7 @@
 
 > If GitHub does not render the notebook properly, open the nbviewer link below for a clean static view.
 
->**Notebook View**: [fraud_clean.ipynb on nbviewer](https://nbviewer.org/github/A1r1p1it/toxic-comments-classification/blob/main/nlp.ipynb)
+>**Notebook View**: [nlp.ipynb on nbviewer](https://nbviewer.org/github/A1r1p1it/toxic-comments-classification/blob/main/nlp.ipynb)
 
 Multi-label text classification system to identify toxic comments across 6 categories using classical NLP and machine learning models.
 
