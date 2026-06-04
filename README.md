@@ -125,6 +125,32 @@ PR-AUC is the primary evaluation metric.
 
 ---
 
+## Error Analysis
+
+Performed qualitative analysis of false positives and false negatives across rare toxic categories such as `threat` and `identity_hate`.
+
+Observed challenges included:
+
+- Context-dependent toxicity
+- Sarcasm and implicit insults
+- Label overlap between `toxic`, `insult`, and `obscene`
+- Rare-category instability caused by extreme class imbalance
+
+This analysis provided insight into model limitations beyond aggregate evaluation metrics and helped compare model robustness on difficult examples.
+
+## LLM-Assisted Toxicity Analysis
+
+To better understand ambiguous and context-dependent toxic comments, I used an LLM to review a sample of difficult cases identified during error analysis.
+
+The objective was not to improve model performance, but to:
+
+- Interpret ambiguous toxic comments
+- Explain classification outcomes
+- Compare model predictions with contextual language understanding
+- Explore limitations of classical TF-IDF based approaches
+
+This analysis highlighted challenges such as sarcasm, implicit toxicity, contextual meaning, and nuanced language that are difficult to capture using traditional machine learning methods alone.
+
 ## Key Findings
 
 ### Best Model: Logistic Regression
@@ -135,6 +161,18 @@ PR-AUC is the primary evaluation metric.
 - Stable performance on sparse high-dimensional features
 
 ---
+
+## Model Interpretation
+
+To improve interpretability, I analyzed the highest-weight TF-IDF features learned by the Logistic Regression classifier for each toxicity category.
+
+Examples:
+
+- `identity_hate` was associated with discriminatory language and targeted slurs.
+- `threat` was strongly associated with violent intent expressions.
+- `obscene` was driven by profanity-heavy token patterns.
+
+This analysis helped explain model behavior and understand which language patterns influenced predictions across different toxicity categories.
 
 ### Why Accuracy is Misleading
 
@@ -157,13 +195,14 @@ This demonstrates why PR-AUC and F1 scores are more appropriate for imbalanced m
 - Python
 - Pandas
 - NumPy
-- Scikit-learn  
-  - TfidfVectorizer  
-  - OneVsRestClassifier  
-  - Pipeline  
-  - LogisticRegression  
-  - MultinomialNB  
+- Scikit-learn
+  - TfidfVectorizer
+  - OneVsRestClassifier
+  - Pipeline
+  - LogisticRegression
+  - MultinomialNB
 - XGBoost
+- LLaMA 3.3 70B (LLM-assisted analysis)
 - Jupyter Notebook
 
 ---
@@ -176,6 +215,9 @@ This demonstrates why PR-AUC and F1 scores are more appropriate for imbalanced m
 - Handling imbalanced data
 - TF-IDF with bigrams
 - Model comparison & benchmarking
+- Error analysis
+- Model interpretation
+- LLM-assisted evaluation
 - Pipeline architecture
 
 ---
