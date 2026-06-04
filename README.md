@@ -75,6 +75,18 @@ Logistic Regression performs well with sparse TF-IDF features due to its linear 
 
 ---
 
+## Model Interpretation
+
+To improve interpretability, I analyzed the highest-weight TF-IDF features learned by the Logistic Regression classifier for each toxicity category.
+
+Examples:
+
+- `identity_hate` was associated with discriminatory language and targeted slurs.
+- `threat` was strongly associated with violent intent expressions.
+- `obscene` was driven by profanity-heavy token patterns.
+
+This analysis helped explain model behavior and understand which language patterns influenced predictions across different toxicity categories.
+
 ### 2. Naive Bayes
 
 - `MultinomialNB(alpha=0.1)`
@@ -161,18 +173,6 @@ This analysis highlighted challenges such as sarcasm, implicit toxicity, context
 - Stable performance on sparse high-dimensional features
 
 ---
-
-## Model Interpretation
-
-To improve interpretability, I analyzed the highest-weight TF-IDF features learned by the Logistic Regression classifier for each toxicity category.
-
-Examples:
-
-- `identity_hate` was associated with discriminatory language and targeted slurs.
-- `threat` was strongly associated with violent intent expressions.
-- `obscene` was driven by profanity-heavy token patterns.
-
-This analysis helped explain model behavior and understand which language patterns influenced predictions across different toxicity categories.
 
 ### Why Accuracy is Misleading
 
