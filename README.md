@@ -7,7 +7,14 @@
 
 >**Notebook View**: [nlp.ipynb on nbviewer](https://nbviewer.org/github/A1r1p1it/toxic-comments-classification/blob/main/nlp.ipynb)
 
-Multi-label text classification system to identify toxic comments across 6 categories using classical NLP and machine learning models.
+## Live Demo
+
+- Streamlit UI: [Link]
+- FastAPI API Documentation (Swagger UI): [Link]
+
+The deployed application allows users to submit comments and receive toxicity predictions across all six categories with associated probability scores.
+
+Multi-label toxic comment classification system built using classical NLP and machine learning techniques. The project includes model training, evaluation, explainability, error analysis, LLM-assisted evaluation, a FastAPI inference API, a Streamlit frontend, Docker containerization, and deployment on Hugging Face Spaces.
 
 ---
 
@@ -157,14 +164,17 @@ This analysis provided insight into model limitations beyond aggregate evaluatio
 
 To better understand ambiguous and context-dependent toxic comments, I used an LLM to review a sample of difficult cases identified during error analysis.
 
-The objective was not to improve model performance, but to:
+The objective was not to improve model performance but to compare classical TF-IDF predictions against contextual reasoning from LLaMA 3.3 70B.
 
-- Interpret ambiguous toxic comments
+The LLM was used to:
+
+- Identify toxicity labels
+- Distinguish explicit vs implicit toxicity
+- Determine whether conversational context was required
 - Explain classification outcomes
-- Compare model predictions with contextual language understanding
-- Explore limitations of classical TF-IDF based approaches
+- Compare contextual reasoning with model predictions
 
-This analysis highlighted challenges such as sarcasm, implicit toxicity, contextual meaning, and nuanced language that are difficult to capture using traditional machine learning methods alone.
+This analysis highlighted limitations of lexical approaches when handling nuanced, context-dependent, or implicitly toxic language.
 
 ## Key Findings
 
@@ -187,11 +197,35 @@ This demonstrates why PR-AUC and F1 scores are more appropriate for imbalanced m
 
 ## Technical Implementation
 
-- Used **Pipeline pattern** to combine TF-IDF + model
-- Prevents data leakage
-- Ensures reproducible workflow
+- Serialized trained model using `pickle`
+- Built FastAPI inference service
+- Implemented structured API schemas using Pydantic
+- Created Streamlit frontend for interactive predictions
+- Containerized application using Docker
 
 ---
+
+## Deployment Architecture
+
+The project was extended beyond model development into a deployable machine learning application.
+
+### Components
+
+- Trained Logistic Regression model serialized using `pickle`
+- FastAPI backend for real-time inference
+- Pydantic request/response validation
+- Streamlit frontend for interactive predictions
+- Docker containerization
+- Hugging Face Spaces deployment
+
+### Inference Workflow
+
+User Input
+→ Streamlit UI
+→ FastAPI API
+→ Serialized Model
+→ Toxicity Predictions
+→ Results Displayed to User
 
 ## Technologies Used
 
@@ -207,6 +241,13 @@ This demonstrates why PR-AUC and F1 scores are more appropriate for imbalanced m
 - XGBoost
 - LLaMA 3.3 70B (LLM-assisted analysis)
 - Jupyter Notebook
+- FastAPI
+- Streamlit 
+- Pydantic
+- Docker
+- Hugging Face Spaces
+- Model Serialization (pickle)
+- Requests
 
 ---
 
@@ -222,12 +263,66 @@ This demonstrates why PR-AUC and F1 scores are more appropriate for imbalanced m
 - Model interpretation
 - LLM-assisted evaluation
 - Pipeline architecture
+- Model explainability
+- Error analysis
+- LLM-assisted evaluation
+- Model serialization
+- REST API development
+- Frontend-backend integration
+- Docker containerization
+- ML model deployment
 
 ---
 
 ## How to Run
 
+### 1. Clone the Repository
+
 ```bash
-pip install numpy pandas scikit-learn xgboost
+git clone https://github.com/A1r1p1it/toxic-comments-classification.git
+cd toxic-comments-classification
+```
+
+### 2. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Run the Notebook
+
+```bash
 jupyter notebook nlp.ipynb
+```
+
+### 4. Run the FastAPI Inference Service
+
+```bash
+uvicorn app.main:app --reload
+```
+
+The API will be available at:
+
+```text
+http://127.0.0.1:8000
+```
+
+Swagger UI:
+
+```text
+http://127.0.0.1:8000/docs
+```
+
+### 5. Run the Streamlit Frontend
+
+```bash
+streamlit run streamlit_app.py
+```
+
+### 6. Run with Docker
+
+```bash
+docker build -t toxic-comment-classifier .
+docker run -p 7860:7860 toxic-comment-classifier
+```
 
