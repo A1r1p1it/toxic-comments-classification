@@ -9,14 +9,14 @@
 
 ## Live Demo
 
-- Streamlit UI: [Link]
-- FastAPI API Documentation (Swagger UI): [Link]
+- **Streamlit UI**: [https://huggingface.co/spaces/Arpitkr/toxic-comment-ui](https://huggingface.co/spaces/Arpitkr/toxic-comment-ui)
+- **FastAPI API Documentation (Swagger UI)**: [https://arpitkr-toxic-comment-api.hf.space/docs](https://arpitkr-toxic-comment-api.hf.space/docs)
 
 The deployed application allows users to submit comments and receive toxicity predictions across all six categories with associated probability scores.
 
 Multi-label toxic comment classification system built using classical NLP and machine learning techniques. The project includes model training, evaluation, explainability, error analysis, LLM-assisted evaluation, a FastAPI inference API, a Streamlit frontend, Docker containerization, and deployment on Hugging Face Spaces.
 
----
+---00
 
 ## Problem Statement
 
